@@ -125,8 +125,8 @@ class Hand
       end
       hand1vals.delete(hand1_value.keys[0])
       hand2vals.delete(hand2_value.keys[0])
-      hand1vals.sort!
-      hand2vals.sort!
+      # hand1vals.sort!
+      # hand2vals.sort!
       if hand1vals[0] != hand2vals[0]
         return (hand1vals[i] > hand2vals[i] ? hand1 : hand2)
       end
@@ -235,6 +235,39 @@ class Hand
     end
   end
 
+  def four_of_a_kind_tiebreaker(hand1,hand2)
+    
+
+    hand1counter = valuescounter(hand1)
+    hand2counter = valuescounter(hand2)
+    
+    hand1_value = hand1counter.select { |key, value| value == 4 }
+    hand2_value = hand2counter.select { |key, value| value == 4 }
+
+    if hand1_value.keys[0] > hand2_value.keys[0]
+      return hand1
+    elsif hand2_value.keys[0] > hand1_value.keys[0]
+      return hand2
+    else
+      hand1vals = Array.new
+      hand2vals = Array.new
+      hand1.cards.each do |card|
+        hand1vals << card.value
+      end
+      hand2.cards.each do |card|
+        hand2vals << card.value
+      end
+      hand1vals.delete(hand1_value.keys[0])
+      hand2vals.delete(hand2_value.keys[0])
+      if hand1vals[0] != hand2vals[0]
+        return (hand1vals[i] > hand2vals[i] ? hand1 : hand2)
+      end
+      nil
+    end
+  end
+
+
+
   def tiebreaker(hand1, hand2, rank)
 
     case rank
@@ -254,8 +287,9 @@ class Hand
     when 6
       return full_house_tiebreaker(hand1,hand2)
     when 7
+      return four_of_a_kind_tiebreaker(hand1,hand2)
     when 8
-
+      return straight_tiebreaker(hand1,hand2)
     end
 
   end
