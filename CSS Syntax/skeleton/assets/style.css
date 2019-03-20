@@ -1,0 +1,46 @@
+* {
+  background-color: fuchsia
+}
+
+body {
+  font-family: Arial, sans-serif
+
+}
+
+h1 {
+  font-size: 38px
+
+}
+
+h2 {
+  
+  font-size: 32px
+
+}
+
+.ingredients-list {
+
+  list-style: square inside;
+
+}
+
+ol.directions_list {
+
+  list-style: upper-roman outside;
+  padding: 5%;
+
+}
+
+header > img { 
+  width: 100px
+}
+
+ol li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.user_review {
+  margin: 50px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
