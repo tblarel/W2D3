@@ -1,3 +1,8 @@
+require_relative "player"
+require_relative "hand"
+require_relative "deck"
+
+
 class Game
   attr_reader :deck, :active_players, :players, :current_pot, :current_player, :current_dealer
   
