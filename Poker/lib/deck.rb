@@ -1,4 +1,7 @@
+require 'singleton'
+
 class Deck
+  include Singleton
   def initialize
     @cards = Array.new(52)
     52.times do |i|
