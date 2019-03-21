@@ -11,7 +11,12 @@ describe Card do
     it "expects initializing a card to not raise an error" do
       expect{ Card.new(5, :diamonds) }.to_not raise_error
     end
+  end
 
-    
+  describe "#to_s" do
+    it "displays an Ace correctly" do
+      ace_card = Card.new(1, :spades)
+      expect(ace_card.to_s).to eq("A#{:spades}")
+    end
   end
 end
